@@ -1,0 +1,27 @@
+{
+	"name": "Copy Paste List",
+	"short_name": "Copy Paste List",
+	"description": "Quick, unformatted, copy and paste-able lists for all your needs.",
+	"start_url": "/",
+	"background_color": "#fff",
+	"display": "fullscreen",
+	"lang": "en-US",
+	"theme_color": "#fff",
+	"icons": [
+		{
+			"src": "/wp-content/uploads/fbrfg/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		},
+		{
+			"src": "/wp-content/uploads/fbrfg/favicon-32x32.png",
+			"sizes": "32x32",
+			"type": "image/png"
+		},
+		{
+			"src": "/wp-content/uploads/fbrfg/favicon-16x16.png",
+			"sizes": "16x16",
+			"type": "image/png"
+		}
+	]
+}
