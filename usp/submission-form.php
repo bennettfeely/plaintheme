@@ -2,16 +2,25 @@
 	<div class="wrapper">
 		<div class="container">
 			<div class="wrapper split">
-				<div class="submit-heading">
-					<div class="submit-graphic">✍️</div>
+				<div class="split-heading">
+					<div class="mega-icon">✍️</div>
 					<h1>Create a New List</h1>
 					<?php
 						$count = wp_count_posts();
 						$list_count = $count->publish;
 					?>
-					<h2>We currently have <?php echo $list_count; ?> lists on Copy Paste List, and we're always looking for more.</h2>
+					<h2 class="thin">We currently have <span id="submit-list-count"><?php echo $list_count; ?></span> lists on Copy Paste List, and we're always looking for more.</h2>
 					<p>You are more than welcome to contribute to this website by submitting your own list.</p>
 					<p>All lists are reviewed before publication.</p>
+					<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/countup.min.js"></script>
+					<script>
+						var options = {
+							useEasing: true, 
+							useGrouping: true
+						};
+						var demo = new CountUp("submit-list-count", 0, <?php echo $list_count; ?>, 0, 2.5, options);
+						demo.start();
+					</script>
 				</div>
 				<div class="important-wrapper">
 					<div class="important">
@@ -42,12 +51,25 @@
 			</div>
 
 			<form id="usp_form" method="post" enctype="multipart/form-data" action=" https://copypastelist.com/successful-submission/">
-				<fieldset class="submit-title">
-					<label for="user-submitted-title">
-						<div class="meta-label">List title</div>
-						<input class="submit-input" id="user-submitted-title" name="user-submitted-title" type="text" placeholder="List of..." value="" required>
-					</label>
-				</fieldset>
+				
+				<div class="split">
+					<fieldset class="submit-title">
+						<label for="user-submitted-title">
+							<div class="meta-label">List title</div>
+							<input class="submit-input" id="user-submitted-title" name="user-submitted-title" type="text" placeholder="List of..." value="" required>
+						</label>
+					</fieldset>
+					<div class="spacer"></div>
+					<fieldset class="submit-category">
+						<label for="user-submitted-category">
+							<div class="meta-label">List category</div>
+							<select id="user-submitted-category" name="user-submitted-category" required>
+								<option value="">Select a category</option>
+								<?php echo usp_get_cat_options(); ?>
+							</select>
+						</label>
+					</fieldset>
+				</div>
 
 				<div class="split">
 					<fieldset class="submit-custom-source-name">
@@ -66,16 +88,7 @@
 						</label>
 					</fieldset>
 				</div>
-				
-				<fieldset class="submit-category">
-					<label for="user-submitted-category">
-						<div class="meta-label">List category</div>
-						<select id="user-submitted-category" name="user-submitted-category" required>
-							<option value="">Select a category</option>
-							<?php echo usp_get_cat_options(); ?>
-						</select>
-					</label>
-				</fieldset>
+
 				
 				<fieldset class="submit-content">
 					<label for="user-submitted-content">

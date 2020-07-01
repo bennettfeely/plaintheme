@@ -4,10 +4,10 @@
 			<div class="wrapper">
 				<div class="container">
 					<div class="wrapper split">
-						<div class="submit-heading">
-							<div class="submit-graphic">✅</div>
+						<div class="split-heading">
+							<div class="mega-icon">✅</div>
 							<h1>List submission successful!</h1>
-							<h2>Thank you!</h2>
+							<h2 class="thin">Thank you!</h2>
 							<p>Your list has been received. Now it will be reviewed and if approved, included in our index of lists.</p>
 						</div>
 						<?php

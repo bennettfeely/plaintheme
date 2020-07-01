@@ -15,7 +15,7 @@
 							$args = array(
 								'cat' => $current_category->cat_ID,
 								'order' => 'ASC',
-								'orderby' => 'name',
+								'orderby' => 'title',
 								'post_type' => 'post',
 								'posts_per_page' => -1
 							);

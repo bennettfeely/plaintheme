@@ -102,10 +102,11 @@ var comment_form = document.querySelector(".comment-form");
 var comment_textarea = document.querySelector(".comment-textarea");
 var comment_submit = document.querySelector(".comment-submit");
 var comment_submit_button = document.querySelector(".comment-submit-button");
-var comment_status = document.querySelector(".comment-status");
 var comment_spinner = document.querySelector(
 	".comment-spinner-wrapper .spinner"
 );
+var comment_preview = document.querySelector(".comment-preview");
+var comment_status = document.querySelector(".comment-status");
 
 if (document.body.contains(comment_toggle_button)) {
 	comment_toggle_button.addEventListener("click", function () {
@@ -131,8 +132,11 @@ if (document.body.contains(comment_toggle_button)) {
 		request.onload = function () {
 			console.log(request);
 
-			comment_textarea.setAttribute("disabled", true);
-			comment_textarea.setAttribute("spellcheck", false);
+			// Copy comment text to preview div and hide the textarea
+			var comment_text = document.querySelector(".comment-textarea")
+				.value;
+			comment_preview.innerHTML = comment_text;
+			hide(comment_textarea);
 
 			hide(comment_submit);
 

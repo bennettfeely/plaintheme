@@ -2,7 +2,7 @@
 	<button class="button comment-toggle-button">Suggest an edit</button>
 	<form class="comment-form">
 		<h3 class="meta-label">Suggest an edit</h3>
-		<small class="meta-value">Feedback you provide helps keep Copy Paste List updated and accurate.</small>
+		<small class="meta-value">We welcome your help to keep this list updated and accurate.</small>
 		<textarea class="comment-textarea" name="comment" id="comment" rows="4" required></textarea>
 		<div class="comment-submit">
 			<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>">
@@ -13,5 +13,6 @@
 		</div>
 		<?php do_action('comment_form', $post->ID); ?>
 	</form>
+	<div class="comment-preview"></div>
 	<p class="comment-status"></p>
 </div>

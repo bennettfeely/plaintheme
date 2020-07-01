@@ -70,6 +70,11 @@ h1 {
 
 h2 {
 	font-size: 1.4em;
+
+	&.thin {
+		font-size: 1.2em;
+		font-weight: normal;
+	}
 }
 
 h3 {
@@ -224,6 +229,10 @@ select {
 	margin-top: 0.5rem;
 	padding: 0.25em 0.5em;
 	border: 2px solid $border_primary;
+
+	&:hover {
+		border-color: $border_primary_dark;
+	}
 }
 
 // Structure ===========================================================
@@ -247,9 +256,30 @@ section {
 }
 
 .split {
+	flex-wrap: wrap;
+
+	.container > & {
+		align-items: center;
+	}
+
+	> * {
+		flex: 1 0 10em;
+	}
+
+	.spacer {
+		flex: 0 1 1em;
+	}
+
 	@media (min-width: $mobile) {
 		display: flex;
 		overflow: hidden;
+	}
+}
+
+@media (min-width: $mobile) {
+	.split-heading {
+		padding: 0 0.5em;
+		margin-right: 1em;
 	}
 }
 
@@ -259,14 +289,12 @@ section {
 	margin: 0 1em;
 
 	@media (min-width: $mobile) {
-		width: calc(50% - 1em);
-
 		&.main {
-			width: calc(62% - 1em);
+			flex: 1 0 28em;
 			margin: 0 0 0 1em;
 		}
 		&.side {
-			width: 38%;
+			flex: 1 0 18em;
 			margin: 0 1em 0 0;
 			border-left: 0;
 		}
@@ -392,43 +420,14 @@ section {
 	text-align: center;
 }
 
-.spinner {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: $white;
-	animation: spin 0.4s linear infinite;
-	color: $border_primary_dark;
-	border-radius: 50%;
-
-	.search-wrapper & {
-		opacity: 0;
-		animation-play-state: paused;
-	}
-
-	.is-loading-instant-search .search-wrapper & {
-		opacity: 1;
-		animation-play-state: running;
-	}
-}
-
-@keyframes spin {
-	100% {
-		transform: rotate(1turn);
-	}
-}
-
 .search-input {
 	font: inherit;
 	font-size: 1.2rem;
 	display: block;
 	flex: 1;
 	width: 100%;
-	line-height: 2.5;
-	padding: 0 1rem 0 0.25em;
+	line-height: 2rem;
+	padding: 0.5rem 1rem 0.5rem 0.25em;
 	border: none;
 	background: transparent;
 
@@ -780,16 +779,24 @@ section {
 }
 
 .comment-textarea {
-	margin: 1em 0;
+	margin: 0.75em 0;
 	resize: vertical;
 	min-height: 5em;
+}
 
-	&[disabled] {
-		color: $black;
-		pointer-events: none;
-		border: 0;
-		background: linear-gradient($yellow-200, 90%, #f5da8b);
+.comment-preview,
+.comment-status {
+	&:empty {
+		display: none;
 	}
+}
+
+.comment-preview {
+	margin: 1em 0;
+	padding: 1em;
+	background: $border_secondary_light;
+	color: $gray-700;
+	border-radius: $radius;
 }
 
 .comment-spinner-wrapper {
@@ -804,60 +811,25 @@ section {
 	}
 }
 
-.comment-status:empty {
-	display: none;
-}
-
 // Submit Page =========================================================
 .submit {
-	h2 {
-		font-size: 1.2em;
-		font-weight: normal;
-	}
-
 	fieldset {
 		border: 0;
-		margin: 0.5em 0;
+		margin: 0.25em 0;
 		padding: 0;
 	}
 
 	label {
 		display: block;
 		padding: 0.5em;
-		border: 1px solid $border_secondary_light;
-		border-radius: $radius;
+		border-top: 1px solid $border_secondary_light;
 
 		&:focus-within {
-			border-color: $border_primary_light;
 			background: $border_primary_light;
+			border-color: transparent;
+			border-radius: $radius;
 		}
 	}
-
-	.split {
-		flex-wrap: wrap;
-		align-items: center;
-
-		> * {
-			flex: 1 0 10em;
-		}
-
-		.spacer {
-			flex: 0 1 1em;
-		}
-	}
-}
-
-@media (min-width: $mobile) {
-	.submit-heading {
-		padding: 0 0.5em;
-		margin-right: 1em;
-	}
-}
-
-.submit-graphic {
-	font-size: 4em;
-	line-height: 1;
-	margin-bottom: 0.5rem;
 }
 
 .important-wrapper {
@@ -984,12 +956,44 @@ footer {
 	}
 }
 
+.spinner {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: $white;
+	animation: spin 0.4s linear infinite;
+	color: $border_primary_dark;
+	border-radius: 50%;
+
+	.search-wrapper & {
+		opacity: 0;
+		animation-play-state: paused;
+	}
+
+	.is-loading-instant-search .search-wrapper & {
+		opacity: 1;
+		animation-play-state: running;
+	}
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(1turn);
+	}
+}
+
 // Print styling =======================================================
 .print-only {
 	width: 100%;
-	border: 1px dashed black;
+	border: 1px solid black;
+	border-radius: $radius;
 	padding: 1em;
 	page-break-inside: avoid;
+	width: max-content;
+	max-width: 100%;
 
 	@media not print {
 		display: none;
@@ -1013,6 +1017,12 @@ footer {
 		margin: 0 0.25rem 0 0;
 		vertical-align: middle;
 	}
+}
+
+.mega-icon {
+	font-size: 4em;
+	line-height: 1;
+	margin-bottom: 0.5rem;
 }
 
 .submit-page-link {

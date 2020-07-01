@@ -139,7 +139,7 @@
 
 							<div class="box">
 								<h3>
-									<span class="meta-label">List Length: </span>
+									<span class="meta-label">List length: </span>
 									<span class="meta-value"><?php echo count($content); ?></span>
 								</h3>
 							</div>
@@ -173,7 +173,7 @@
 						<div class="box operations">
 							<h3>List style</h3>
 							<label class="radio-wrapper style-default">
-								<input type="radio" onchange="listStyle('default')" name="list_style" checked="checked" /><span>No Formatting</span>
+								<input type="radio" onchange="listStyle('default')" name="list_style" checked="checked" /><span>No formatting</span>
 							</label>
 							<label class="radio-wrapper style-numbers">
 								<input type="radio" onchange="listStyle('numbers')" name="list_style" /><span>Numbers</span>
