@@ -1,10 +1,10 @@
 <section class="submit">
 	<div class="wrapper">
 		<div class="container">
-			<div class="wrapper split">
-				<div class="split-heading">
+			<div class="wrapper split split-half split-centered">
+				<div class="split-item">
 					<div class="mega-icon">✍️</div>
-					<h1>Create a New List</h1>
+					<h1>Submit a New List</h1>
 					<?php
 						$count = wp_count_posts();
 						$list_count = $count->publish;
@@ -22,45 +22,47 @@
 						demo.start();
 					</script>
 				</div>
-				<div class="important-wrapper">
-					<div class="important">
-						<h3>Make sure your list...</h3>
-						<ul>
-							<li>Is backed by a reputable source</li>
-							<li>Is in a logical order</li>
-							<li>Is appropriate for all ages</li>
-							<li>Is objective and definitive</li>
-								<ul class="bad">
-									<li>Bad: List of the Worst Movies</li>
-									<li>Bad: List of Things to do in Paris</li>
-								</ul>
-							<li>Is finite</li>
-								<ul class="bad">
-									<li>Bad: List of Colors</li>
-									<li>Bad: List of Stars</li>
-								</ul>
-							<li>Doesn't need frequent updates</li>
-								<ul class="bad">
-									<li>Bad: List of New York Yankees</li>
-									<li>Bad: List of Richest People in the World</li>
-								</ul>
-						</ul>
+				<div class="split-spacer"></div>
+				<aside class="split-item">
+					<div class="important-wrapper">
+						<div class="important">
+							<h3>Make sure your list...</h3>
+							<ul>
+								<li>Is backed by a reputable source</li>
+								<li>Is in a logical order</li>
+								<li>Is appropriate for all ages</li>
+								<li>Is objective and definitive</li>
+									<ul class="bad">
+										<li>Bad: List of the Worst Movies</li>
+										<li>Bad: List of Things to do in Paris</li>
+									</ul>
+								<li>Is finite</li>
+									<ul class="bad">
+										<li>Bad: List of Colors</li>
+										<li>Bad: List of Stars</li>
+									</ul>
+								<li>Doesn't need frequent updates</li>
+									<ul class="bad">
+										<li>Bad: List of New York Yankees</li>
+										<li>Bad: List of Richest People in the World</li>
+									</ul>
+							</ul>
+						</div>
+						<div class="trim-bottom"></div>
 					</div>
-					<div class="trim-bottom"></div>
-				</div>
+				</aside>
 			</div>
 
 			<form id="usp_form" method="post" enctype="multipart/form-data" action=" https://copypastelist.com/successful-submission/">
-				
-				<div class="split">
-					<fieldset class="submit-title">
+				<div class="split split-half">
+					<fieldset class="split-item submit-title">
 						<label for="user-submitted-title">
 							<div class="meta-label">List title</div>
 							<input class="submit-input" id="user-submitted-title" name="user-submitted-title" type="text" placeholder="List of..." value="" required>
 						</label>
 					</fieldset>
-					<div class="spacer"></div>
-					<fieldset class="submit-category">
+					<div class="split-spacer"></div>
+					<fieldset class="split-item submit-category">
 						<label for="user-submitted-category">
 							<div class="meta-label">List category</div>
 							<select id="user-submitted-category" name="user-submitted-category" required>
@@ -70,17 +72,16 @@
 						</label>
 					</fieldset>
 				</div>
-
-				<div class="split">
-					<fieldset class="submit-custom-source-name">
+				<div class="split split-half">
+					<fieldset class="split-item submit-custom-source-name">
 						<label for="user-submitted-name">
 							<div class="meta-label">List source</div>
 							<small class="meta-value">e.g. NASA</small>
 							<input id="user-submitted-name" name="user-submitted-name" type="text" value="" class="usp-input" required>
 						</label>
 					</fieldset>
-					<div class="spacer"></div>
-					<fieldset class="submit-custom-source-url">
+					<div class="split-spacer"></div>
+					<fieldset class="split-item submit-custom-source-url">
 						<label for="user-submitted-url">
 							<div class="meta-label">List URL</div>
 							<small class="meta-value">Wikipedia is discouraged</small>
@@ -89,7 +90,6 @@
 					</fieldset>
 				</div>
 
-				
 				<fieldset class="submit-content">
 					<label for="user-submitted-content">
 						<div class="meta-label">List data</div>

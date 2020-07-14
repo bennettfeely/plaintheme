@@ -1,5 +1,6 @@
 var html = document.querySelector("html");
 var content_list_wrapper = document.querySelector(".content-list-wrapper");
+var content_list = document.querySelector(".content-list");
 
 // Copy list button
 if (ClipboardJS.isSupported()) {
@@ -27,7 +28,7 @@ if (ClipboardJS.isSupported()) {
 }
 
 // Sort list
-function sort(order) {
+function listSort(order) {
 	flash(".sort-" + order);
 
 	if (order == "default") {
@@ -50,21 +51,21 @@ function listStyle(list_style) {
 	flash(".style-" + list_style);
 
 	if (list_style == "default") {
-		loopContent("div", "div", list_style);
+		loopListStyle("div", "div", list_style);
 	}
 
 	if (list_style == "bullets") {
-		loopContent("ul", "li", list_style);
+		loopListStyle("ul", "li", list_style);
 	}
 
 	if (list_style == "numbers") {
-		loopContent("ol", "li", list_style);
+		loopListStyle("ol", "li", list_style);
 	}
 }
 
 // Change list structure
-function loopContent(parent_tag, child_tag, list_style) {
-	var list_items = document.querySelectorAll(".content-item");
+function loopListStyle(parent_tag, child_tag, list_style) {
+	var content_items = document.querySelectorAll(".content-item");
 
 	var new_parent = document.createElement(parent_tag);
 	new_parent.className = "content-list " + list_style;
@@ -72,18 +73,47 @@ function loopContent(parent_tag, child_tag, list_style) {
 	content_list_wrapper.innerHTML = "";
 	content_list_wrapper.appendChild(new_parent);
 
-	var i;
-	for (i = 0; i < list_items.length; i++) {
+	content_items.forEach((content_item) => {
 		var new_item = document.createElement(child_tag);
 		new_item.className = "content-item";
 
-		var text_content = list_items[i].innerHTML;
-		var data_order = list_items[i].getAttribute("data-order");
+		var text_content = content_item.innerHTML;
+		var default_case = content_item.getAttribute("data-default-case");
+		var default_order = content_item.getAttribute("data-default-order");
 
 		new_item.innerHTML = text_content;
-		new_item.setAttribute("data-order", data_order);
+		new_item.setAttribute("data-default-order", default_order);
+		new_item.setAttribute("data-default-case", default_case);
 
 		new_parent.appendChild(new_item);
+	});
+}
+
+// Change list case
+function listCase(list_case) {
+	flash(".case-" + list_case);
+
+	var content_items = document.querySelectorAll(".content-item");
+
+	if (list_case == "default") {
+		content_items.forEach((content_item) => {
+			var default_case = content_item.getAttribute("data-default-case");
+			content_item.innerHTML = default_case;
+		});
+	}
+
+	if (list_case == "uppercase") {
+		content_items.forEach((content_item) => {
+			var default_case = content_item.getAttribute("data-default-case");
+			content_item.innerHTML = default_case.toUpperCase();
+		});
+	}
+
+	if (list_case == "lowercase") {
+		content_items.forEach((content_item) => {
+			var default_case = content_item.getAttribute("data-default-case");
+			content_item.innerHTML = default_case.toLowerCase();
+		});
 	}
 }
 

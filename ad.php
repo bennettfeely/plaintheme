@@ -1,4 +1,4 @@
-<div class="add-wrapper no-select">
+<div class="add-wrapper no-select no-print">
 	<div class="add-beg">
 		<p>I promise the ad that goes here isn't annoying.</p>
 		<p>Consider whitelisting this page.</p>

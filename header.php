@@ -84,9 +84,7 @@
 				<section class="intro no-select no-print">
 					<div class="wrapper">
 						<div class="container">
-							<?php if ( is_home() ) { ?>
-								<h3>No popups, No formatting. Just a bunch of quick, updated, copy and paste-able lists.</h3>
-							<?php } ?>
+							<h3>No popups, No formatting. Just a bunch of quick, updated, copy and paste-able lists.</h3>
 							<?php get_template_part('search-form'); ?>
 						</div>
 					</div>
